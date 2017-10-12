@@ -1,4 +1,7 @@
 <?php
+session_start();
+include("functions.php");
+ssidChk();
 //1.POSTでParamを取得
 $id = $_GET["id"];
 

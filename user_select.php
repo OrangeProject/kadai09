@@ -1,5 +1,7 @@
 <?php
-
+session_start();
+include("functions.php");
+ssidChk();
 //2. DB接続
 try {
   $pdo = new PDO('mysql:dbname=gs_db;charset=utf8;host=localhost','root', '');
@@ -66,6 +68,15 @@ if($status==false){
     <div class="container jumbotron"><?=$view?></div>
 </div>
 <!-- Main[End] -->
+<div id="footer-outer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+<?php
+    if($_SESSION["kanri_flg"] == 1){
+    echo '<script>$("#footer-outer").load("./footer.html #footer-inner");</script>';
+    }else{
+    echo '<script>$("#footer-outer").load("./footer_rf.html #footer-inner");</script>';
+    }
+?>
 </body>
 </html>

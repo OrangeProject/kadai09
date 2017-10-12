@@ -1,4 +1,7 @@
 <?php
+session_start();
+include("functions.php");
+ssidChk();
 //1.POSTでParamを取得
 $id = $_GET["id"];  
 
@@ -72,7 +75,16 @@ if($status==false){
   </div>
 </form>
 <!-- Main[End] -->
+<div id="footer-outer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+<?php
+    if($_SESSION["kanri_flg"] == 1){
+    echo '<script>$("#footer-outer").load("./footer.html #footer-inner");</script>';
+    }else{
+    echo '<script>$("#footer-outer").load("./footer_rf.html #footer-inner");</script>';
+    }
+?>
 
 </body>
 </html>

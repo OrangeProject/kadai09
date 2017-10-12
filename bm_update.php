@@ -1,4 +1,7 @@
 <?php
+session_start();
+include("functions.php");
+ssidChk();
 //1.POSTでParamを取得
 $id = $_POST["id"];
 $title = $_POST["title"];
@@ -22,5 +25,14 @@ $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute();
 
 header("Location: bm_select.php");
+<div id="footer-outer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+<?php
+    if($_SESSION["kanri_flg"] == 1){
+    echo '<script>$("#footer-outer").load("./footer.html #footer-inner");</script>';
+    }else{
+    echo '<script>$("#footer-outer").load("./footer_rf.html #footer-inner");</script>';
+    }
+?>
 ?>

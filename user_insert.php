@@ -1,5 +1,8 @@
 
 <?php
+session_start();
+include("functions.php");
+ssidChk();
 //1. POST受信
 $name = $_POST["name"];
 $lid = $_POST["lid"];
@@ -46,6 +49,15 @@ if($status==false){
     
 </head>
 <body>
+<div id="footer-outer"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+<?php
+    if($_SESSION["kanri_flg"] == 1){
+    echo '<script>$("#footer-outer").load("./footer.html #footer-inner");</script>';
+    }else{
+    echo '<script>$("#footer-outer").load("./footer_rf.html #footer-inner");</script>';
+    }
+?>
 </body>
 </html>
